@@ -8,9 +8,9 @@ that those data are saved, this is needed so we don't need to print out actual p
 Acceptance criteria:
 * Create NodeJS server which works on 3001 port - DONE
 * Server should be able to handle three paths: "/",
- "/save-signature", "/get-last-signature"
+ "/save-signature", "/get-last-signature" - DONE
 * "/" path responds whith HTML from, which consists 
-of two input fields (username and signature)
+of two input fields (username and signature) - DONE
 * "/save-signature" path is used to send form 
 data using POST method
 * Add logic on server side which can receive data
@@ -26,7 +26,31 @@ file and responds those data to browser
 const http = require('http');
 
 const server = http.createServer((req,res) => {
-console.log(req.url, req.method, req.headers);
+    const url = req.url;
+    if (url === '/'){
+        res.write('<html>');
+        res.write('<head><title>Enter message</title></head>');
+        res.write('<body><form action="/message" method="POST"><input type="text" name="username" placeholder="username"><br><input type="text" name="signature" placeholder="signature"><button type="submit"> Send </button></form></body>');
+        res.write('</html>');
+        res.end();
+        return res.end();
+    }
+    if (url === '/save-signature'){
+        res.write('<html>');
+        res.write('<head><title>Enter message</title></head>');
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit"> Send </button></form></body>');
+        res.write('</html>');
+        res.end();
+        return res.end();
+    }
+    if (url === '/get-last-signature'){
+        res.write('<html>');
+        res.write('<head><title>Enter message</title></head>');
+        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit"> Send </button></form></body>');
+        res.write('</html>');
+        res.end();
+        return res.end();
+    }
 //process.exit();
 res.setHeader('Content-Type','text/html');
 res.write('<html>');
