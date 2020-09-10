@@ -24,23 +24,21 @@ file and responds those data to browser
 //console.log("Sveiks!")
 
 const http = require('http');
-
+const fs = require ('fs');
 const server = http.createServer((req,res) => {
     const url = req.url;
     if (url === '/'){
         res.write('<html>');
         res.write('<head><title>Enter message</title></head>');
-        res.write('<body><form action="/message" method="POST"><input type="text" name="username" placeholder="username"><br><input type="text" name="signature" placeholder="signature"><button type="submit"> Send </button></form></body>');
+        res.write('<body><form action="/save-signature" method="POST"><input type="text" name="username" placeholder="username"><br><input type="text" name="signature" placeholder="signature"><button type="submit"> Send </button></form></body>');
         res.write('</html>');
         res.end();
         return res.end();
     }
-    if (url === '/save-signature'){
-        res.write('<html>');
-        res.write('<head><title>Enter message</title></head>');
-        res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit"> Send </button></form></body>');
-        res.write('</html>');
-        res.end();
+    if (url === '/save-signature' && method ==='POST'){
+        fs.writeFileSync('message.txt','DUMMY');
+        res.statusCode= 302;
+        res.setHeader('Location','/');
         return res.end();
     }
     if (url === '/get-last-signature'){
