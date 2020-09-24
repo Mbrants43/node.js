@@ -1,0 +1,24 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "routes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "vtdt-server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mbrants43/node.js.git"
+  },
+  "author": "Mārtiņš Ervīns Brants",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mbrants43/node.js/issues"
+  },
+  "homepage": "https://github.com/Mbrants43/node.js#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
